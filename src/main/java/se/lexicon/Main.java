@@ -1,10 +1,9 @@
 package se.lexicon;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.Period;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
+import java.util.Locale;
 
 public class Main {
     static void main() {
@@ -41,9 +40,24 @@ public class Main {
         // Exercise 11 – Parse Time from String
         parseTimeString("10:32:53");
         System.out.println();
-
-
-
+        // Exercise 12 – Formatted Current Time
+        formattedTime();
+        System.out.println();
+        // Exercise 13 – Specific LocalDateTime
+        specificDateTime();
+        System.out.println();
+        // Exercise 14 – Formatted LocalDateTime
+        formattedDateTime();
+        System.out.println();
+        // Exercise 15 – Combine Date and Time
+        combineDateTime();
+        System.out.println();
+        // Exercise 16 – Extract Components from LocalDateTime
+        extractComponents();
+        System.out.println();
+        // Extra Challenge – Calendar for 2018
+        calender2018();
+        System.out.println();
 
     }
     //Create a LocalDate of the current day and print it out.
@@ -139,6 +153,82 @@ public class Main {
         }
 
     }
+
+    //Using DateTimeFormatter format LocalTime from current time and print it out as following pattern: 10:32:53.
+    public static void formattedTime(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        LocalTime time = LocalTime.now();
+        System.out.println("Formatted Time: "+time.format(formatter));
+    }
+
+    //Create a LocalDateTime with the date and time components as: date: 2018-04-05, time: 10.00.
+    public static void specificDateTime(){
+        LocalDateTime dateTime =LocalDateTime.of(2018,4,5,10,0);
+        System.out.println("Date and Time: "+dateTime);
+    }
+
+    //Using DateTimeFormatter format the LocalDateTime object from exercise 13 to a String that should look like this: torsdag 5 april 10:00.
+    public static void formattedDateTime(){
+        DateTimeFormatter formatter=DateTimeFormatter.ofPattern("eeee dd MMMM HH:mm", new Locale("bn", "BD"));
+        LocalDateTime dateTime =LocalDateTime.of(2018,4,5,10,0);
+        String formatted = dateTime.format(formatter);
+        System.out.println("Formatted Date and Time: "+ formatted);
+    }
+
+    //Create a LocalDateTime object by combining LocalDate object and LocalTime object.
+    public static void combineDateTime(){
+        LocalDate date =LocalDate.now();
+        LocalTime time =LocalTime.now();
+        LocalDateTime combined = date.atTime(time);
+        System.out.println(combined);
+    }
+
+    //Create a LocalDateTime object. Then get the LocalDate and LocalTime components into separate objects of respective types from the LocalDateTime object.
+    public static void extractComponents(){
+        LocalDateTime dateTime = LocalDateTime.now();
+        LocalDate date = dateTime.toLocalDate();
+        LocalTime time = dateTime.toLocalTime();
+        System.out.println("Together: " + dateTime);
+        System.out.println("Date: " + date);
+        System.out.println("Time: "+time);
+    }
+
+    //Create your own calendar for the year 2018. The program should print out all days of the year, organized in a monthly calendar style.
+    public static void calender2018(){
+        int year =2018;
+        for (int month = 1; month <= 12; month++) {
+            YearMonth yearMonth = YearMonth.of(year, month);
+
+            // Print Month and Year Header
+            String monthName = yearMonth.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+            System.out.println("\n      " + monthName + " " + year);
+            System.out.println("Su Mo Tu We Th Fr Sa");
+
+            // Get the day of the week for the 1st of the month
+            LocalDate firstOfMonth = yearMonth.atDay(1);
+            int dayOfWeekValue = firstOfMonth.getDayOfWeek().getValue();
+
+            // Adjust so Sunday is the first column (0 spaces if Sunday)
+            int spaces = (dayOfWeekValue == 7) ? 0 : dayOfWeekValue;
+
+            // Print initial padding spaces
+            for (int i = 0; i < spaces; i++) {
+                System.out.print("   ");
+            }
+
+            // Print days of the month
+            for (int day = 1; day <= yearMonth.lengthOfMonth(); day++) {
+                System.out.printf("%2d ", day);
+
+                // Break line every 7th column
+                if ((day + spaces) % 7 == 0) {
+                    System.out.println();
+                }
+            }
+            System.out.println();
+        }
+    }
+
 
 
 
