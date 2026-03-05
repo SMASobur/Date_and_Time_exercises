@@ -1,3 +1,72 @@
+# Java Date & Time Exercises
+
+A collection of Java exercises demonstrating the usage of the **Java Time API (`java.time` package)** including `LocalDate`, `LocalTime`, `LocalDateTime`, `Period`, `YearMonth`, and `DateTimeFormatter`.
+
+## 📚 Overview
+
+This project contains practical examples of working with dates and times in Java, including:
+
+- Getting the current date and time
+- Formatting dates and times
+- Parsing date and time from strings
+- Calculating periods between dates
+- Adding/subtracting years, months, and days
+- Extracting date and time components
+- Working with `LocalDateTime`
+- Generating a full calendar for a specific year (2018)
+
+---
+
+## 🧩 Exercises Included
+
+1. Current Date  
+2. Formatted Current Date  
+3. Last Monday & Full Week Display  
+4. Parse Date from String  
+5. Find Day of the Week  
+6. Future and Past Date Calculation  
+7. Period Between Two Dates  
+8. Add Custom Period to Current Date  
+9. Current Time  
+10. Nanoseconds from LocalTime  
+11. Parse Time from String  
+12. Formatted Current Time  
+13. Create Specific LocalDateTime  
+14. Format LocalDateTime with Locale  
+15. Combine LocalDate and LocalTime  
+16. Extract Date and Time Components  
+17. Generate Full Calendar for 2018  
+
+---
+
+## 🛠 Technologies Used
+
+- Java 8+
+- Java Time API (`java.time`)
+- DateTimeFormatter
+- Locale handling
+
+---
+
+## ▶ How to Run
+
+1. Clone the repository
+2. Open in IntelliJ IDEA (or any Java IDE)
+3. Run the `Main` class
+
+---
+
+## 🎯 Purpose
+
+This project is designed for learning and practicing Java Date & Time API concepts through small, focused exercises.
+
+---
+
+## 👨‍💻 Author
+
+Md Abdus Sobur
+
+
 ---
 
 ![Lexicon Logo](https://lexicongruppen.se/media/wi5hphtd/lexicon-logo.svg)
